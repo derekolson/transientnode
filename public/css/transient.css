@@ -1,0 +1,126 @@
+@charset "UTF-8";
+/* CSS Document */
+/*** GENERAL & RESET STYLES ***/ 
+
+html, body {
+	font-family: 'Open Sans Condensed', Arial, Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased !important;
+	font-smoothing: antialiased; !important;
+	font-weight: normal;
+	font-style: normal;
+	font-variant: normal;	
+	background:#000; /*#7EA7DF;*/
+	color: #fff;
+	overflow: hidden;
+}
+
+html, body, img, div, h1 {
+	margin: 0;
+	padding: 0;
+}
+
+/* =============================================================================
+  	Main Container
+   ========================================================================== */
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+	
+.container {
+	position:relative;
+}
+	
+.photo-container{
+	position: absolute;
+	/*
+	border: 5px solid #FFF;
+	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0, 0.6);
+	-moz-box-shadow:    0px 0px 8px rgba(0,0,0, 0.6);
+	box-shadow:         0px 0px 8px rgba(0,0,0, 0.6);
+	*/
+}
+
+#photo{}
+ 	
+.info{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	background-color:rgba(0,0,0,0.5);
+}
+
+.tweet-container{
+	padding: 10px;
+}
+ 	
+.user-name{
+	width:auto;
+	float: left;
+}
+			
+.user-photo{
+	border: 2px solid #FFF;
+	margin-right: 20px;
+	-webkit-box-shadow: 4px 4px 0px rgba(0,0,0, 0.6);
+	-moz-box-shadow: 4px 4px 0px rgba(0,0,0, 0.6);
+	box-shadow: 3px 3px 0px rgba(0,0,0, 0.6);	
+	float: left;
+}
+
+@media only screen and (min-width: 320px) {
+	.user-photo{
+		width:32px;
+		height: 32px;
+	}
+	
+	.user-name{
+		font-size: 18px;
+		line-height: 36px;
+	}
+}
+
+@media only screen and (min-width: 480px) {
+	.user-photo{
+		width:32px;
+		height: 32px;
+	}
+	
+	.user-name{
+		font-size: 18px;
+		line-height: 36px;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.user-photo{
+		width:38px;
+		height: 38px;
+	}
+	
+	.user-name{
+		font-size: 22px;
+		line-height: 42px;
+	}
+}
+
+@media only screen and (min-width: 1140px) {
+	.user-photo{
+		width:48px;
+		height: 48px;
+	}
+	
+	.user-name{
+		font-size: 28px;
+		line-height: 52px;
+	}
+}
