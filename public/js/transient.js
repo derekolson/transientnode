@@ -58,7 +58,7 @@ function onTouchStart(event) {
 		var touch = newTouches[i];
 		
 		touches[touch.identifier] = touch;
-		sendNote(touch);
+		sendTouchStart(touch);
 	}
 
 }
@@ -71,34 +71,39 @@ function onTouchMove(event) {
 	for (i=0; i<len; i++) {
 		var touch = changedTouches[i];
 		touches[touch.identifier] = touch;
-		sendNote(touch);
+		sendTouchMove(touch);
 	}
 }
 
 function onTouchEnd(event) {
-	console.log(event);
+	event.preventDefault();
 	var removedTouches = event.changedTouches;
 	var i, len = removedTouches.length;
 	for (i=0; i<len; i++) {
 
 		var touch = removedTouches[i];
 		delete touches[touch.identifier];
-
-		//console.log(touch, j);
-		sendNoteOff(touch);
+		sendTouchEnd(touch);
 	}
 }
 
-function sendNote(touch) {
+function sendTouchStart(touch) {
 	var id = touch.identifier;
 	var px = touch.pageX/w;
 	var py = touch.pageY/h;
 
-	socket.emit('touch', {id:id, x:px, y:py});
-	//socket.emit('noteOn', {id:id, x:px, y:py});
+	socket.emit('touchstart', {id:id, x:px, y:py});
 }
 
-function sendNoteOff(touch) {
+function sendTouchMove(touch) {
+	var id = touch.identifier;
+	var px = touch.pageX/w;
+	var py = touch.pageY/h;
+
+	socket.emit('touchmove', {id:id, x:px, y:py});
+}
+
+function sendTouchEnd(touch) {
 	var id = touch.identifier;
 	var px = touch.pageX/w;
 	var py = touch.pageY/h;
@@ -109,10 +114,7 @@ function sendNoteOff(touch) {
 function render() {
 	ctx.clearRect(0, 0, w, h);
 
-	//var i, len = touches.length;
-	//for (i=0; i<len; i++) {
-	var i;
-	for(i in touches) {
+	for(var i in touches) {
 		var touch = touches[i];
 		var px = touch.pageX;
 		var py = touch.pageY;
