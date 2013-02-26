@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 <style type="text/css">
 body { margin: 0px; overflow: hidden; }
-canvas { border: 1px solid black; }
+.container { width: 100%; position: relative; }
+.container button{ position: absolute; right: 10%; bottom: 10%; }
+canvas { height:100%; width:100%; border: 1px solid black; }
 </style>
 	<script src="/js/socket.io.min.js"></script>
 </head>
 <body onload="init()">
-
-<canvas id="canvas" width="300" height="300"></canvas>
-
+	<div class="container">
+		<canvas id="canvas"></canvas>
+		<!-- <button id="clear" type="submit">CLEAR</button> -->
+	</div>
 <script type="text/javascript" src="/js/transient.js"></script>
 </body>
 </html>

@@ -3,7 +3,6 @@ var ctx;
 var w = 0;
 var h = 0;
 var touches = [];
-//var touches = {};
 
 var socket = io.connect("/");
 
@@ -111,11 +110,19 @@ function sendTouchEnd(touch) {
 	socket.emit('touchend', {id:id, x:px, y:py});
 }
 
+function clearTouches() {
+	for(var id in touches) {
+		var touch = touches[i];
+		sendTouchEnd(touch);
+		delete touches[id];
+	}
+}
+
 function render() {
 	ctx.clearRect(0, 0, w, h);
 
-	for(var i in touches) {
-		var touch = touches[i];
+	for(var id in touches) {
+		var touch = touches[id];
 		var px = touch.pageX;
 		var py = touch.pageY;
 
