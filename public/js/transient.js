@@ -118,6 +118,10 @@ function clearTouches() {
 	}
 }
 
+function switchScale(scale) {
+	socket.emit('scale', scale);
+}
+
 function render() {
 	ctx.clearRect(0, 0, w, h);
 
